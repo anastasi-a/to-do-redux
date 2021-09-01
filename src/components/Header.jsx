@@ -38,11 +38,9 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
-
 const mapDispatchToProps = {
   create,
   toggleCheck
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);

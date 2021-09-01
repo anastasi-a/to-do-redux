@@ -70,8 +70,6 @@ class TodoItem extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
-
 const mapDispatchToProps = {
   update,
   remove,
@@ -79,4 +77,4 @@ const mapDispatchToProps = {
   toggleCheck
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoItem);
+export default connect(null, mapDispatchToProps)(TodoItem);

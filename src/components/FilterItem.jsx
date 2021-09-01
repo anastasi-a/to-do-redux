@@ -14,10 +14,8 @@ class FilterItem extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
-
 const mapDispatchToProps = {
   filterTodo
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterItem);
+export default connect(null, mapDispatchToProps)(FilterItem);

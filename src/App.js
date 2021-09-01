@@ -11,8 +11,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps =  {}
-
 class App extends React.Component {
   render() {
     return (
@@ -25,4 +23,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
