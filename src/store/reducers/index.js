@@ -7,11 +7,9 @@ export const ACTION_TOGGLE = "TOGGLE";
 export const ACTION_TOGGLE_ALL = "TOGGLE_ALL";
 export const ACTION_REMOVE_COMPLETED = "REMOVE_COMPLETED";
 export const ACTION_FILTER = "FILTER";
-export const ACTION_TOGGLE_CHECK = "TOGGLE_CHECK";
 
 const initialValue = {
   todos: [],
-  allCompleted: false,
   currentFilter: Filter.all
 }
 
@@ -63,7 +61,6 @@ const reducer = (state = initialValue, {type, payload}) => {
           item => {
             return {...item, completed: payload}
           }),
-        allCompleted: payload
       }
 
     case ACTION_REMOVE_COMPLETED:
@@ -72,7 +69,6 @@ const reducer = (state = initialValue, {type, payload}) => {
         todos: [
           ...state.todos.filter(item => !item.completed)
         ],
-        allCompleted: false,
         currentFilter: state.currentFilter === Filter.completed ?
           Filter.all : state.currentFilter
       }
@@ -81,14 +77,6 @@ const reducer = (state = initialValue, {type, payload}) => {
       return {
         ...state,
         currentFilter: payload
-      }
-
-    case ACTION_TOGGLE_CHECK:
-      return {
-        ...state,
-        allCompleted:
-          state.todos.length > 0 &&
-          state.todos.length === state.todos.filter(item => item.completed).length
       }
 
     default:

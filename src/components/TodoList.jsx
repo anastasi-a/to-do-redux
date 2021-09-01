@@ -16,14 +16,19 @@ class TodoList extends React.Component {
     }
   }
 
+  toggleCheck = () => {
+    return this.props.todos.length > 0 &&
+      this.props.todos.length === this.props.todos.filter(item => item.completed).length;
+  }
+
   render() {
     return(
       <section className="main">
         <input id="toggle-all"
                className="toggle-all"
                type="checkbox"
-               checked={this.props.allCompleted}
-               onChange={(e) => {this.props.toggleAll(!this.props.allCompleted)}}
+               checked={this.toggleCheck()}
+               onChange={(e) => {this.props.toggleAll(!this.toggleCheck())}}
         />
           <label htmlFor="toggle-all">Mark all as complete</label>
           <ul className="todo-list">
@@ -45,7 +50,6 @@ class TodoList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     todos: state.todos,
-    allCompleted: state.allCompleted,
     currentFilter: state.currentFilter
   }
 }

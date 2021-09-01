@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {update, remove, toggle, toggleCheck} from "../store/actions";
+import {update, remove, toggle} from "../store/actions";
 
 class TodoItem extends React.Component {
   constructor(props) {
@@ -54,14 +54,14 @@ class TodoItem extends React.Component {
             className="toggle"
             type="checkbox"
             checked={this.props.item.completed}
-            onChange={() => this.props.toggle(this.props.item.id).then(() => this.props.toggleCheck())}
+            onChange={() => this.props.toggle(this.props.item.id)}
           />
           <label onDoubleClick={this.editHandler}>
             {this.props.item.title}
           </label>
           <button
             className="destroy"
-            onClick={() => this.props.remove(this.props.item.id).then(() => this.props.toggleCheck())}
+            onClick={() => this.props.remove(this.props.item.id)}
           >
           </button>
         </div>
@@ -73,8 +73,7 @@ class TodoItem extends React.Component {
 const mapDispatchToProps = {
   update,
   remove,
-  toggle,
-  toggleCheck
+  toggle
 }
 
 export default connect(null, mapDispatchToProps)(TodoItem);

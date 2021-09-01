@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {create, toggleCheck} from "../store/actions";
+import {create} from "../store/actions";
 
 class Header extends React.Component {
   constructor(props) {
@@ -14,8 +14,7 @@ class Header extends React.Component {
   onKeyPress = (e) => {
     if (e.key === 'Enter') {
       if (e.target.value.trim()) {
-        this.props.create(this.state.value)
-          .then(() => this.props.toggleCheck())
+        this.props.create(this.state.value);
         this.setState({value: ""});
       }
     }
@@ -39,8 +38,7 @@ class Header extends React.Component {
 }
 
 const mapDispatchToProps = {
-  create,
-  toggleCheck
+  create
 }
 
 export default connect(null, mapDispatchToProps)(Header);
